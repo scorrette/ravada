@@ -2,21 +2,27 @@
 
 **Implemented enhancements:**
 
-- Machine schedule reservation [\#1337]
-- Manage nodes and networks settings [\#1305]
-- User management part in ravada [\#1500]
-- Manage LDAP groups
-- Limit to start virtual machines [\#1490]
-- Add access filter to a machine with LDAP groups [\#1488]
-- Debian 11 (Bullesye) ISO support [\#1580]
+- Add Parrot Linux ISO [\#1609]
+- Add Devuan iso packages [\#1599]
 
 **Refactor**
 
-- Confusing button placement in ports form [\#1469]
-- Clones number sequence coherency [\#1454]
-- Responsive grants form
+- Text Login with User/Password -> Login [\#1630]
+- Remove hardcoded strings [\#1602]
+- Refresh after spinoff [\#1601]
+- build: removing dependencies of IPTables::ChainMgr from docker [\#1598]
 
 **Bugfixes**
 
-- Linux Mint ISO Download fails [\#1576]
-- Machine in a node returns to KVMlocalhost when a machine option is modified [\#1440]
+- Check port timeout [\#1629]
+- Multiple values in LDAP attribute [\#1626]
+- Data too long for column 'args' [\#1603]
+- dockers: Validate xml properly [\#1617]
+- Ravada doesn't start from dockers in develop branch [\#1615]
+- Image docker not build since changes in DockerHub personal plan [\#1611]
+- Do not allow to create base from volatile machines[\#1604]
+- Select group access machine [\#1597]
+- Overlapping schedules check failed [\#1594]
+- Choose groups with Typeahead input [\#1593]
+- Groups in access shows only a few [\#1588]
+- Groups in schedule shows only a few [\#1587]
