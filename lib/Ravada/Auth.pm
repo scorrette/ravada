@@ -50,8 +50,8 @@ sub init {
     if (exists $config->{kerberos} && $config->{kerberos} && (!defined $KERBEROS_OK || $KERBEROS_OK) ) {
         eval {
 		    $KERBEROS_OK = 0;
-            require Ravada::Auth::KERBEROS;
-            Ravada::Auth::KERBEROS::init($config);
+            require Ravada::Auth::Kerberos;
+            Ravada::Auth::Kerberos::init($config);
             $KERBEROS_OK = 1;
         };
         warn $@ if $@;
@@ -100,6 +100,7 @@ sub login {
         warn $ldap_err if $ldap_err && $LDAP_OK && !$quiet;
         warn $kerberos_err if $kerberos_err && $KERBEROS_OK && !$quiet;
     }
+	print 'test';
     return $sql_login;
 }
 
@@ -161,6 +162,24 @@ sub enable_SSO {
     return $SSO_OK if !defined $value;
 
     $SSO_OK = $value;
+    return $value;
+}
+
+=head2 enable_Kerberos
+
+Sets or get Kerberos support.
+
+    Ravada::Auth::enable_Kerberos(0);
+
+    print "Kerberos is supported" if Ravada::Auth::enable_Kerberos();
+
+=cut
+
+sub enable_Kerberos {
+    my $value = shift;
+    return $KERBEROS_OK if !defined $value;
+
+    $KERBEROS_OK = $value;
     return $value;
 }
 

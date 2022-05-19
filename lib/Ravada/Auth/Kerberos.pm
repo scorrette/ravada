@@ -32,13 +32,13 @@ sub BUILD($self) {
 sub _connect_kerberos($self) {
     return $KERBEROS if $KERBEROS;
 
-    my $server = $$CONFIG->{kerberos}->{server} or die "Error: missing kerberos server in config file";
-    $KERBEROS = Authen::Krb5::Simple->connect($server);
+    my $realm = $$CONFIG->{kerberos}->{realm} or die "Error: missing kerberos server in config file";
+    $KERBEROS = Authen::Krb5::Simple->new(realm => $realm);
 }
 
 sub login($self) {
     $self->_connect_kerberos();
-    return $KERBEROS->auth($self->login, $self->password);
+    return $KERBEROS->authenticate($self->login, $self->password);
 }
 
 sub add_user($self) {
